@@ -4,14 +4,12 @@ include "student_class.php";
 
 $student = new Student($conn);
 
-/* LOGOUT */
 if(isset($_GET['logout'])) {
     session_destroy();
     header("Location: index.php");
     exit();
 }
 
-/* LOGIN */
 if(isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -36,7 +34,6 @@ if(isset($_POST['login'])) {
 
 <?php if(!isset($_SESSION['user'])) { ?>
 
-    <!-- LOGIN FORM -->
     <h2>Login</h2>
 
     <?php if(isset($error)) echo "<p class='error'>$error</p>"; ?>
@@ -49,7 +46,6 @@ if(isset($_POST['login'])) {
 
 <?php } else { ?>
 
-    <!-- DASHBOARD -->
     <div class="dashboard-header">
         <h2>Welcome, <?php echo $_SESSION['user']; ?></h2>
         <div class="dashboard-actions">
@@ -93,4 +89,5 @@ if(isset($_POST['login'])) {
 
 </div>
 </body>
+
 </html>
